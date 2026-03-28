@@ -1,0 +1,387 @@
+:root {
+    --deep-red: #8B0000;
+    --soft-pink: #FFC0CB;
+    --hot-pink: #FF69B4;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Fredoka', cursive;
+    background-color: var(--deep-red);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Slide Backgrounds */
+.slide-l {
+    background-color: var(--deep-red);
+}
+
+.slide-r {
+    background-color: var(--deep-red);
+}
+
+.slide-w {
+    background-color: var(--white);
+}
+
+/* Typography */
+.bubble-text {
+    font-size: 3rem;
+    color: var(--hot-pink);
+    text-shadow: 2px 2px var(--soft-pink);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bubble-text.white {
+    color: var(--white);
+    text-shadow: 2px 2px var(--hot-pink);
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family: 'Fredoka', cursive;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn-black {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.btn-white {
+    background-color: var(--white);
+    color: var(--deep-red);
+}
+
+.btn-blow {
+    background-color: var(--hot-pink);
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-next {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+/* Slide 1: Lock Screen */
+.lock-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.polaroid-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 60px 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+    position: relative;
+    width: 250px;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blue-bow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 60px;
+    height: 60px;
+    background: #0077be;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    transform: rotate(-15deg);
+}
+
+.keypad-wrapper {
+    flex: 1;
+    color: var(--white);
+    text-align: center;
+}
+
+.keypad-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hint {
+    color: var(--soft-pink);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.passcode-dots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.passcode-dots span {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.passcode-dots span.filled {
+    background-color: var(--white);
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.keypad button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    background: transparent;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.keypad button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Gift Boxes */
+.gifts-container {
+    display: flex;
+    gap: 30px;
+}
+
+.gift-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gift-img:hover {
+    transform: translateY(-10px) rotate(5deg);
+}
+
+.gift-box {
+    width: 100px;
+    height: 100px;
+    background-color: var(--soft-pink);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border: 2px solid var(--hot-pink);
+}
+
+.gift-box:hover {
+    transform: translateY(-10px) rotate(5deg);
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    background: var(--hot-pink);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gift-box::after {
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: var(--hot-pink);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Cake */
+.cake-container {
+    width: 300px;
+    margin-bottom: 30px;
+}
+
+.cake-svg {
+    width: 100%;
+}
+
+.flame {
+    animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Scrapbook */
+.scrapbook-frame {
+    background: #fdf5e6;
+    padding: 30px;
+    border: 5px solid var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+}
+
+.newsprint-bg {
+    background: #fff;
+    padding: 20px;
+    border: 1px dashed var(--black);
+    position: relative;
+}
+
+.collage-img {
+    width: 100%;
+    filter: sepia(0.3);
+}
+
+.newsprint-text {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+.stars {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+}
+
+/* Letter */
+.letter-container {
+    width: 400px;
+    height: 300px;
+    position: relative;
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    background: #0077be;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.letter {
+    background: white;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--black);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.film-strip {
+    position: absolute;
+    bottom: -50px;
+    right: -100px;
+    display: flex;
+    gap: 10px;
+    transform: rotate(-10deg);
+}
+
+.film-strip img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border: 10px solid black;
+    border-bottom-width: 25px;
+}
+
+.character-img {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
