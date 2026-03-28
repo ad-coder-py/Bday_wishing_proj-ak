@@ -18,7 +18,7 @@ function clearPasscode() {
 }
 
 function updatePasscodeDisplay() {
-    const dots = document.querySelectorAll(".passcode-dots span");
+    const dots = document.querySelectorAll("#passcode-display span");
     dots.forEach((dot, index) => {
         if (index < currentPasscode.length) {
             dot.classList.add("filled");
